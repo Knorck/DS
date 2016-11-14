@@ -1,0 +1,108 @@
+\documentclass[a4paper,graphics,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath, tabu}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{mathtools}
+\usepackage{setspace}
+\usepackage{graphicx,color,curves,epsf,float,rotating}
+
+\floatname{algorithm}{Algorithmus}
+
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\newcommand\abs[1]{\left\vert#1\right\vert}
+
+\newcommand\aufgabe[1]{\subsection*{Aufgabe #1}}
+\newcommand\aufgabenteil[1]{\subsubsection*{#1}}
+
+
+
+\pagestyle{empty}
+\begin{document}
+\noindent WS 2016/17        							\hfill Simon Kaiser, 354692 \\
+\noindent Gruppe 3                                      \hfill Johannes Salentin, 367543 \\
+
+\begin{center}
+\Large \textsc{Diskrete Strukturen} \\   % Fach
+\large Aufgabenblatt 3                        % Nummer das Blattes, nicht vergessen zu ändern!
+\end{center}
+\begin{center}
+\rule[0.5ex]{\textwidth}{0.6pt}\vspace*{-\baselineskip}\vspace{3.2pt}
+\rule[0.5ex]{\textwidth}{1.6pt}\\
+\end{center}
+\aufgabe{17}
+\aufgabenteil{a}
+Es seien \\
+$f: \mathbb{Z} \to \mathbb{Z} \times \mathbb{Z}, a \mapsto (a-1,2)$ und $g: \mathbb{Z} \times \mathbb{Z} \to \mathbb{Z}, (b_{1}, b_{2}) \mapsto b_{1} + b_{2}$. \\
+Untersuchen Sie, ob die Komposita $g \circ f$ und $f \circ g$ definiert sich und bestimmen Sie diese gegebenenfalls.\\
+Ja, die Abbildungen sind definiert, denn die Abbildungen $f$ und $g$ sind so gegeben, dass die Zielmenge von $f$ gleich der Startmenge von $g$ ist, und die Zielmenge von $g$ gleich der Startmenge von $f$ ist. Die Komposita $g \circ f$ und $f \circ g$ sind also definiert. \\
+
+$\begin{aligned} $
+$g \circ f &= g(f(a)) = (a-1)+2 = a+1$. \\
+$f \circ~g &= f(g((b_{1},b_{2}))) = (b_{1}+b_{2}-1,2)$.
+$\end{aligned} $
+\aufgabenteil{b}
+Zeigen oder widerlegen Sie: \\
+(i) \\
+F{\"u}r alle Abbildungen $f,g: \{1,2,3\} \to \{1,2,3\}$ gilt $g \circ f = f \circ g$. \\
+Widerlegung durch Gegenbeispiel:\\
+Seien $f:\{1,2,3\} \to \{1,2,3\}, 1 \mapsto 1, 2 \mapsto 1, 3 \mapsto 1$ \\
+und $g:\{1,2,3\} \to \{1,2,3\}, 1 \mapsto 2, 2 \mapsto 2, 3 \mapsto 2$ gegeben. \\
+So ist $g \circ f: \{1,2,3\} \to \{1,2,3\}, 1 \mapsto 2, 2 \mapsto 2, 3 \mapsto 2$ \\
+und $f \circ g:\{1,2,3\} \to \{1,2,3\}, 1 \mapsto 1, 3 \mapsto 1, 3 \mapsto 1$ nicht gleich.\\
+Somit ist die Aussage widerlegt. \\
+(ii)\\
+F{\"u}r alle Abbildungen $f,g: \{1,2,3\} \to \{1,2,3\}$ gilt $g \circ f \neq f \circ g$.\\
+Widerlegung durch Gegenbeispiel:\\
+Seien $f:\{1,2,3\} \to \{1,2,3\}, 1 \mapsto 2, 2 \mapsto 3, 3 \mapsto 1$ \\
+und $g:\{1,2,3\} \to \{1,2,3\}, 1 \mapsto 3, 2 \mapsto 1, 3 \mapsto 2$ gegeben. \\
+So sind $g \circ f: \{1,2,3\} \to \{1,2,3\}, 1 \mapsto 1, 2 \mapsto 2, 3 \mapsto 3$\\
+und $f \circ g: \{1,2,3\} \to \{1,2,3\}, 1 \mapsto 1, 2 \mapsto 2, 3 \mapsto 3$ gleich.\\
+Somit ist die Aussage widerlegt.\\
+Insgesamt gibt es aber Abbildungen, f{\"u}r die $g \circ f = f \circ g$ gilt, aber es gibt auch Abbildungen, f{\"u}r die genau dies nicht gilt, also $g \circ f \neq f \circ g$ ist. Folglich sind beide Aussagen widerlegt.
+\aufgabenteil{c}
+Zu zeigen: Die Abbildung 
+$f:\{0,1\}^{\{0,1\}} \to \{0,1,2,3\}, h \mapsto h_{0} \cdot 2^0 + b_{1} \cdot 2^1$
+ist invertierbar.\\ Die Abbildung ordnet jeder Abbildung mit Start- und Zielmenge $\{0,1\}$ einer Zahl von 0 bis 3 zu. F kann somit auch wie folgt geschrieben werden:\\
+
+$\begin{aligned}
+$f:\{0,1\}^{\{0,1\}} \to \{0,1,2,3\}, &(f_{0}:\{0,1\} \to \{0,1\}, 0 \mapsto 0, 1 \mapsto 0) \mapsto 0$, \\
+$&(f_1:\{0,1\} \to \{0,1\}, 0 \mapsto 1, 1 \mapsto 0) \mapsto 1$,\\
+$&(f_2:\{0,1\} \to \{0,1\}, 0 \mapsto 0, 1 \mapsto 1) \mapsto 2$,\\
+$&(f_3:\{0,1\} \to \{0,1\}, 0 \mapsto 1, 1 \mapsto 1) \mapsto 3.\\
+$\end{aligned}$
+
+Sei nun $g$ gegeben mit:\\
+
+$\begin{aligned}$
+$g:\{0,1,2,3\} \to \{0,1\}^{\{0,1\}}, &0 \mapsto (f_{0}:\{0,1\} \to \{0,1\}, 0 \mapsto 0, 1 \mapsto 0)$,\\
+$&1 \mapsto (f_{1}:\{0,1\} \to \{0,1\}, 0 \mapsto 1, 1 \mapsto 0)$,\\
+$&2 \mapsto (f_{2}:\{0,1\} \to \{0,1\}, 0 \mapsto 0, 1 \mapsto 1)$,\\
+$&3 \mapsto (f_{3}:\{0,1\} \to \{0,1\}, 0 \mapsto 1, 1 \mapsto 1)$.\\
+$\end{aligned}$
+
+Dann gilt $f \circ g = id_{\{0,1,2,3\}}$ und $g \circ f = id_{\{0,1\}^{\{0,1\}}}$.\\
+Das bedeutet, $g$ ist eine Inverse zu $f$ und folglich ist $f$ auch invertierbar.\\
+\aufgabe{18}
+$x \in \{\mathbb{N},\mathbb{Z}, \mathbb{Q}\}$, $f:X \to X, x \mapsto 4x-3$\\
+$f$ ist injektiv, falls eine Abbildung $g$ existiert, sodass $g \circ f = id_{x}$ gilt.\\
+$\bigg( y=4x-3 \iff y+3=4x \iff x = \frac{x+3}{4}\bigg)$ \\
+Sei $g: X \to X, x \mapsto \frac{x+3}{4}$ gegeben. So ist \\
+$g \circ f = g(f(x) = \frac{(4x-3)+3}{4} = \frac{4x}{4} = x = id_{x}$.~~~ \checkmark \\
+Somit ist die Abbildung $f$ injektiv. \\
+
+$f$ ist surjektiv, falls eine Abbildung $g$ existiert, sodass $f \circ g = id_{x}$.\\
+Sei $g: X \to X, x \mapsto \frac{x+3}{4}$ gegeben. So ist \\
+$f \circ g = f(g(x) = 4(\frac{x+3}{4})-3 = x+3-3 = x = id_{x}$. ~~~ \checkmark \\
+Somit ist die Abbildung $f$ surjektiv. \\
+
+Insgesamt ist die Abbildung f bijektiv, da sie sowohl injektiv, als auch surjektiv ist und besitzt eine Inverse in $g$ mit $g: x \to x, x \mapsto \frac{x+3}{4}$.
+
+\end{document}
+% Nummer des Blattes angepasst?
