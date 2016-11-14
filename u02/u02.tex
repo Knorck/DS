@@ -1,0 +1,142 @@
+\documentclass[a4paper,graphics,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath, tabu}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{mathtools}
+\usepackage{setspace}
+\usepackage{graphicx,color,curves,epsf,float,rotating}
+
+\floatname{algorithm}{Algorithmus}
+
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\newcommand\abs[1]{\left\vert#1\right\vert}
+
+\newcommand\aufgabe[1]{\subsection*{Aufgabe #1}}
+\newcommand\aufgabenteil[1]{\subsubsection*{#1}}
+
+
+
+\pagestyle{empty}
+\begin{document}
+\noindent WS 2016/17        							\hfill Simon Kaiser, 354692 \\
+\noindent Gruppe 3                                      \hfill Johannes Salentin, 367543 \\
+
+\begin{center}
+\Large \textsc{Diskrete Strukturen} \\   % Fach
+\large Aufgabenblatt 2                        % Nummer das Blattes, nicht vergessen zu ändern!
+\end{center}
+\begin{center}
+\rule[0.5ex]{\textwidth}{0.6pt}\vspace*{-\baselineskip}\vspace{3.2pt}
+\rule[0.5ex]{\textwidth}{1.6pt}\\
+\end{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Ab hier kommt der Text
+%   Neue Aufgabe mit \aufgabe{}
+%   Aufgabenteil mit \aufgabenteil{}
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\aufgabe{11}
+
+Bestimmen Sie eine aussagenlogische Formel in dijkuntiver Normalform und eine aussagenlogische Formel in konjunktiver Normalform, welche jeweils logisch {\"a}quivalent zu $\neg(\neg B \lor A \iff \neg C)$ sind. \\
+
+\begin{tabular}[c]{l l l || c | c | c } 
+$ A & B & C & \neg B\lor A & \neg B \lor A \iff \neg C & \neg ( \neg B \lor A \iff \neg C ) $\\ 
+\hline
+ 1 & 1 & 1 & 1 & 0 & 1 \\
+1 & 1 & 0 & 1 & 1 & 0 \\
+1 & 0 & 1 & 1 & 0 & 1 \\
+1 & 0 & 0 & 1 & 1 & 0 \\
+0 & 1 & 1 & 0 & 1 & 0 \\
+0 & 1 & 0 & 0 & 0 & 1 \\
+0 & 0 & 1 & 1 & 0 & 1 \\
+0 & 0 & 0 & 1 & 1 & 0 \\
+\end{tabular}
+\\
+
+Aus den Wahrheitswerten der aussagenlogischen Formel \\
+$ \neg ( \neg B \lor A \iff \neg C ) $
+folgt: \\
+Konjunkive Normalform: 
+$Con(110) \land Con(100) \land Con(011) \land Con(000) \\ $
+$ \iff (\neg A \lor \neg B \lor C) \land ( \neg A \lor B \lor C) \land (A \lor \neg B \lor \neg C) \land (A \lor B \lor C). $
+
+\aufgabe{12}
+
+\aufgabenteil{a}
+Seien A, B, C, D, X Mengen, wobei $ A, B, C, D \subseteq X$ gilt. \\
+Die Behauptung ist $(A \times C) \cup (B \times D) = (A \cup B) \times (C \cup D)$. \\
+Seien die Mengen $A := \{1,2\}, B:= \{3,4\}, C := \{5,6\}$ und $D := \{7,8\}$ gegeben. \\
+Angenommen: 
+$$\{(1,5),(1,6),(2,5),(2,6)\} \cup \{(3,7),(3,8),(4,7),(4,8)\} = \{1,2,3,4\} \times \{5,6,7,8\} $$
+$$\iff\{(1,5),(1,6),(2,5),(2,6),(3,7),(3,8),(4,7),(4,8)\} \\ $$ 
+
+\begin{center} $ = \{(1,5),(1,6),$\underbrace{(1,7)}_{nicht~in~linker~Menge~enthalten}},...\}. $ \\
+\end{center}
+Daraus folgt, dass die Mengen verschieden sind. Somit ist die Behauptung widerlegt.
+\aufgabenteil{b}
+A, B, C seien beliebige Mengen.\\
+Die Behauptung ist $ A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$. 
+$$ A \cup (B \cap C) = A \cup \{x |(x \in B \land x \in C\} $$
+
+\begin{aligned}
+$$ A \cup \{x |(x \in B \land x \in C\} &= \{x|x \in A \lor (x \in B \land x \in C)} $$ \\
+$$&= \{x |(x \in A \lor x \in B) \land (x \in A \lor x \in C)\} $$ \\
+$$&= \{x |(x \in A \cup B) \land (x \in A \cup C)\} $$ \\
+$$&= (A \cup B) \cap (A \cup C) ~~~\Box $$ \\
+\end{aligned}
+
+\aufgabenteil{c}
+A, B, C seien beliebige Mengen. \\
+Die Behauptung ist $A \times (B \cap C) = (A \times B) \cap (A \times C)$.
+
+\begin{aligned}
+$$A \times (B \cap C) &= \{(x,y) | x \in A \land y \in (B \land C)\} $$ \\
+$$&= \{(x,y) | x \in A \land y \in B \land x \in A \land y \in C\} $$ \\
+$$&= \{(x,y) | x \in A \land y \in B\} \cap {(x,y) | x \in A \land y \in C\} $$ \\
+$$&= (A \times B) \cap (A \times C) ~~~\Box $$ \\
+\end{aligned}
+
+\aufgabenteil{d}
+Seien A, B, X Mengen, wobei $ A, B \subseteq X$ gilt. \\
+Die Behauptung ist $X \setminus (A \cup B) = (X \setminus A) \cap (X \setminus B)$.
+$$ &X \setminus (A \cup B) = \{x | x \in X \land x \notin (A \cup B)\} $$ 
+Es gilt \(\neg(A \lor B) \iff \neg A \land \neg B\)  gem{\"a}{\ss} (1.21 DeMorgan), sodass folgt: \\
+\begin{aligned}
+$$&=\{x | (x \in X \land x \notin A) \land (x \in X \land x \notin B)\} $$ \\
+$$&=(x \setminus A) \cap (x \setminus B)~~~\Box $$ 
+\end{aligned}
+
+\aufgabenteil{e}
+Die Behauptung ist $A \cup (B \setminus C) = (A \cup B) \setminus (A \cup C)$. \\
+Seien die Mengen $A := \{1,2\}, B:= \{3,4\}$ und $C := \{5,6\}$ gegeben. 
+
+\begin{aligned}
+$$\{1,2\} \cup \{3,4\} &= \{1,2,3,4\} \setminus \{1,2,5,6\} $$ \\
+$\{1,2,3,4\} &= \{3,4\} \rightarrow $ Widerspruch
+\end{aligned}
+
+\aufgabenteil{f}
+A, B, C seien beliebige Mengen. \\
+Die Behauptung ist $(A \cup B) \setminus C = (A \setminus C) \cup (B \setminus C)$.\\
+$$(A \cap B) \setminus C = {x | x \in A \lor x \in B) \land x \notin C \}$$ \\
+Es gilt $(A \lor B) \land C \iff (A \land C) \lor (B \land C)$ gem{\"a}{\ss} (1.18,f,(i) Distr.), sodass folgt:
+
+\begin{aligned}
+$$&=\{x | x \in A \land x \notin C \lor x \in B \land x \notin C \} $$\\
+$$&=(A \setminus C) \cup (B \setminus C)~~~\Box
+\end{aligned}
+
+\end{document}
+
+% Nummer des Blattes angepasst?
