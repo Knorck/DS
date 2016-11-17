@@ -30,7 +30,7 @@
 
 \begin{center}
 \Large \textsc{Diskrete Strukturen} \\   % Fach
-\large Aufgabenblatt 3                        % Nummer das Blattes, nicht vergessen zu ändern!
+\large Aufgabenblatt 3                        % Nummer das Blattes, nicht vergessen zu Ã¤ndern!
 \end{center}
 \begin{center}
 \rule[0.5ex]{\textwidth}{0.6pt}\vspace*{-\baselineskip}\vspace{3.2pt}
@@ -43,9 +43,9 @@ $f: \mathbb{Z} \to \mathbb{Z} \times \mathbb{Z}, a \mapsto (a-1,2)$ und $g: \mat
 Untersuchen Sie, ob die Komposita $g \circ f$ und $f \circ g$ definiert sich und bestimmen Sie diese gegebenenfalls.\\
 Ja, die Abbildungen sind definiert, denn die Abbildungen $f$ und $g$ sind so gegeben, dass die Zielmenge von $f$ gleich der Startmenge von $g$ ist, und die Zielmenge von $g$ gleich der Startmenge von $f$ ist. Die Komposita $g \circ f$ und $f \circ g$ sind also definiert. \\
 
-$\begin{aligned} $
-$g \circ f &= g(f(a)) = (a-1)+2 = a+1$. \\
-$f \circ~g &= f(g((b_{1},b_{2}))) = (b_{1}+b_{2}-1,2)$.
+$\begin{aligned}$
+$(g \circ f)(a) &= g(f(a)) = (a-1)+2 = a+1$ f{\"u}r $a \in \mathbb{Z}$. \\
+$(f \circ~g)(b_{1},b_{2}) &= f(g((b_{1},b_{2}))) = (b_{1}+b_{2}-1,2)$ f{\"u}r $(b_{1},b_{2}) \in \mathbb{Z} \times \mathbb{Z}.
 $\end{aligned} $
 \aufgabenteil{b}
 Zeigen oder widerlegen Sie: \\
@@ -90,19 +90,18 @@ $\end{aligned}$
 Dann gilt $f \circ g = id_{\{0,1,2,3\}}$ und $g \circ f = id_{\{0,1\}^{\{0,1\}}}$.\\
 Das bedeutet, $g$ ist eine Inverse zu $f$ und folglich ist $f$ auch invertierbar.\\
 \aufgabe{18}
-$x \in \{\mathbb{N},\mathbb{Z}, \mathbb{Q}\}$, $f:X \to X, x \mapsto 4x-3$\\
-$f$ ist injektiv, falls eine Abbildung $g$ existiert, sodass $g \circ f = id_{x}$ gilt.\\
-$\bigg( y=4x-3 \iff y+3=4x \iff x = \frac{x+3}{4}\bigg)$ \\
-Sei $g: X \to X, x \mapsto \frac{x+3}{4}$ gegeben. So ist \\
-$g \circ f = g(f(x) = \frac{(4x-3)+3}{4} = \frac{4x}{4} = x = id_{x}$.~~~ \checkmark \\
-Somit ist die Abbildung $f$ injektiv. \\
-
-$f$ ist surjektiv, falls eine Abbildung $g$ existiert, sodass $f \circ g = id_{x}$.\\
-Sei $g: X \to X, x \mapsto \frac{x+3}{4}$ gegeben. So ist \\
-$f \circ g = f(g(x) = 4(\frac{x+3}{4})-3 = x+3-3 = x = id_{x}$. ~~~ \checkmark \\
-Somit ist die Abbildung $f$ surjektiv. \\
-
-Insgesamt ist die Abbildung f bijektiv, da sie sowohl injektiv, als auch surjektiv ist und besitzt eine Inverse in $g$ mit $g: x \to x, x \mapsto \frac{x+3}{4}$.
-
+Sei $x \in \{\mathbb{N}, \mathbb{Z}, \mathbb{Q}}$\}.\\
+$f:X \to X, x \mapsto 4x-3$.\\
+Sei $X = \mathbb{N}$ oder $X = \mathbb{Z}, g: X \to X, y \mapsto (y+3) div $.\\
+\begin{aligned}
+$(g \circ f)(x) &= g(f(x)) = g(4x-3) = (4x-3+3)div4$\\
+$&=4x~div4=x$, also $g \circ f = id_{x}$.
+\end{aligned}\\
+Daraus folgt, dass f injektiv ist gem{\"a}{\ss} (3.29a).\\
+Es gibt kein $x \in X$ mit $4x=5$, also kein $x \in X$ mit $f(x)=4x-3=2$. Es folgt, dass f nicht surjektiv ist.\\ 
+Sei nun $x=\mathbb{Q}$. $g:X\to X, y \mapsto \frac{1}{4}(y+3)$.\\
+Es gilt f{\"u}r $x,y \in X: y=4x-3 \iff y+3=4x \iff \frac{y+3}{4}=x$.\\
+$(fÂ \circ g)(x) = g(f(x)) = g(4x-3) = \frac{1}{4}(4x-3+3) = \frac{1}{4}\cdot 4x = x$\\
+$(f \circ g)(y) = f(g(y)) = f(\frac{1}{4}(y+3)) = y$.\\ \\
+Also $g \circ f = id_{x}$ und $f \circ g = id_{x}$ nach (3.6). \\Nach (3.29c) ist $f$ also bijektiv.~~~ \Box
 \end{document}
-% Nummer des Blattes angepasst?
