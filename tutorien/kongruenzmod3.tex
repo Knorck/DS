@@ -1,0 +1,48 @@
+\documentclass[a4paper,graphics,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath, tabu}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{mathtools}
+\usepackage{setspace}
+\usepackage{graphicx,color,curves,epsf,float,rotating}
+
+\floatname{algorithm}{Algorithmus}
+
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\newcommand\abs[1]{\left\vert#1\right\vert}
+
+\newcommand\aufgabe[1]{\subsection*{Aufgabe #1}}
+\newcommand\aufgabenteil[1]{\subsubsection*{#1}}
+
+
+
+\pagestyle{empty}
+\begin{document}
+\noindent WS 2016/17        							\hfill DS Tutorium \\
+\noindent Woche \fbox{\textbf{5}}                      
+
+\begin{center}
+Kongruenz modulo 3
+\end{center}
+\aufgabenteil{a}
+Zu Beweisen: $\equiv_{3}$ ist {\"A}quivalenzrelation.\\
+$x,y \in \mathbb{Z}, x \equiv_{3} y$ genau dann, wenn ein $q \in \mathbb{Z}$ mit $x=q \cdot 3+y$ existiert.\\
+Seien $x,y,z \in \mathbb{Z}$ mit $x \equiv_{3} y$ und $y \equiv_{3} z$, das hei{\ss}t, es existieren $p,q \in \mathbb{Z}$, sodass $x=p \cdot 3+y$ und $y=q \cdot 3+z$ gilt.\\
+\fbox{\textbf{T}} 
+$x=p \cdot 3+y = p \cdot 3+q \cdot 3+z = (\underbrace{p+q}_{r}) \cdot 3+z$, also $x \equiv_{3} z$, ergo ist $\equiv_{3}$ transitiv.\\
+\fbox{\textbf{R}}
+F{\"u}r alle $x \in \mathbb{Z}$ gilt $x=0 \cdot 3+x=x$, also $x \equiv_{3} x$, ergo ist $\equiv_{3}$ reflexiv.\\
+\fbox{\textbf{S}}
+Sei $x \equiv_{3} y$, also $x=q \cdot 3+y$.
+$y=-q \cdot 3+x=(-q) \cdot 3+x$, also $y \equiv_{3} x$, also ist $\equiv_{3}$ symmetrisch.
+\aufgabenteil{b}
+$[1]=[-2]$ in $\mathbb{Z} \setminus \equiv_{3}$.
+Wegen $1=1 \cdot 3 + (-2) = 1 \equiv_{3} -2$, also $[1]=[-2]$ in $\mathbb{Z} \setminus \equiv_{3}$ nach (Prop 5.6 b)).
+\end{document}
