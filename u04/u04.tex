@@ -1,0 +1,85 @@
+\documentclass[a4paper,graphics,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath, tabu}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{mathtools}
+\usepackage{setspace}
+\usepackage{graphicx,color,curves,epsf,float,rotating}
+
+\floatname{algorithm}{Algorithmus}
+
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\newcommand\abs[1]{\left\vert#1\right\vert}
+
+\newcommand\aufgabe[1]{\subsection*{Aufgabe #1}}
+\newcommand\aufgabenteil[1]{\subsubsection*{#1}}
+
+
+
+\pagestyle{empty}
+\begin{document}
+\noindent WS 2016/17        							\hfill Simon Kaiser, 354692 \\
+\noindent Gruppe \fbox{\textbf{3}}                      \hfill Johannes Salentin, 367543 \\
+
+\begin{center}
+\Large \textsc{Diskrete Strukturen} \\   % Fach
+\large Aufgabenblatt 4                        % Nummer das Blattes, nicht vergessen zu ändern!
+\end{center}
+\begin{center}
+\rule[0.5ex]{\textwidth}{0.6pt}\vspace*{-\baselineskip}\vspace{3.2pt}
+\rule[0.5ex]{\textwidth}{1.6pt}\\
+\end{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Ab hier kommt der Text
+%   Neue Aufgabe mit \aufgabe{}
+%   Aufgabenteil mit \aufgabenteil{}
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\aufgabe{23}
+Es sei eine Menge $X$ gegeben.
+\aufgabenteil{a}
+Es seien eine Menge $I$ und eine Familie $(c_{i})_{i \in I}$ von {\"A}quivalenzrelation auf $X$ gegeben. F{\"u}r $x,y \in X$ gelte genau dann $x~c~y$, wenn f{\"u}r $i \in I$ stets $x~c_{i}~y$ gilt. Zeigen Sie, dass $c$ eine {\"A}quivalenzrelation auf $X$ ist.\\
+$c_{i}$ ist genau dann eine {\"A}quivalenzrelation, wenn die Reflexivit{\"a}t, Transitivit{\"a}t und Symmetrie von $c$ gilt. \\
+$c$ ist genau dann reflexiv, wenn $x~c~x$ gilt. $c_{i}$ sei {\"A}quivalenzrelation auf $x$, dann gilt $x~c_{i}~x$ f{\"u}r alle $i\in I$, da f{\"u}r alle $x \in X$ $x~c~x$ gilt.~~ $\checkmark$ \\ \\
+$c$ ist genau dann transitiv, wenn aus $x~c~y$ und $y~c~z$ $x~c~z$ folgt. $c_{i}$ sei eine {\"A}quivalenzrelation, dann folgt aus $x~c_{i}~y$ und $y~c_{i}~z$ $x~c_{i}~z$, da f{\"u}r alle $x,y,z \in X$ aus $x~c~y$ und $y~c~z$ $x~c~z$ folgt. ~~$\checkmark$ \\ \\
+$c$ ist genau dann symmetrisch, wenn $x~c~y$ und $y~c~x$ gilt. $c_{i}$ sei eine {\"A}quivalenzrelation, dann gilt dann gilt $x~c_{i}~y$ und $y~c_{i}~x$ f{\"u}r $i \in I$, da $x~c~y$ und $y~c~x$ f{\"u}r $x,y \in X$ gilt. ~~$\checkmark$ \\ \\
+Da Reflexivit{\"a}t, Transitivit{\"a}t und Symmetrie von $c_{i}$ soeben bewiesen wurde, ist $c_{i}$ eine {\"A}quivalenzrelation. ~~$\Box$
+\aufgabenteil{b}
+$c$ ist genau dann reflexiv, wenn$x~c~x$ gilt. \\
+Es existiert ein $d$ aus $C$ so, dass $x~d~x$ gilt. Da $x~d~x$ gilt, gilt auch $x~c~x$ ~~$\Box$\\
+$c$ ist genau dann transitiv, wenn aus $x~c~y$ und $y~c~z$ $x~c~z$ folgt.\\
+Es existiert ein $d$ aus $C$ so, dass aus $x~d~y$ und $y~d~z$ $x~d~z$ folgt. Da aus $x~d~y$ und $y~d~z$ $x~d~z$ folgt, folgt auch aus aus $x~c~y$ und $y~c~z$ $x~c~z$. ~~$\Box$\\
+$c$ ist genau dann symmetrisch, wenn $x~c~y$ und $y~c~x$ gilt. Es existiert ein $d$ aus $C$ so, dass $x~d~y$ und $y~d~x$ gilt. Da $x~d~y$ und $y~d~x$ gilt, gilt auch $x~c~y$ und $y~c~x$.~~$\Box$\\
+F{\"u}r jede {\"A}quivalenzrelation $d$ auf $X$ derart, dass f{\"u}r $x,y \in X$ aus $x~r~y$ stets $x~d~y$ folgt , folgt f{\"u}r $x,y, \in X$ auch aus $x~c~y$ $x~d~y$.\\
+Somit gilt $x~c~y$, wenn $x~d~y$ gilt. Ebenso gilt $y~c~z$, wenn $y~d~z$ gilt. Weil $d$ eine {\"A}quivalenzrelation ist, folgt aus $x~d~z$ und $y~d~z$ $x~d~z$. Gem{\"a}{\ss} Definition der Transitivit{\"a}t (4.3a) ist $c$ transitiv und die zweite Bedinung erf{\"u}llt. $\checkmark$ 
+\aufgabe{24}
+\aufgabenteil{a}
+Es sei eine Abbildung $f:X \to Y$ gegeben.\\
+(i)  Es sei eine {\"A}quivalenzrelation $c$ auf $Y$ gegeben. F{\"u}r $x,\tilde{x} \in X$ gelte $x~c_{f} \in X$ genau dann, wenn $f(x)~c~f(x)$ gilt. Zeigen Sie, dass $c_{f}$ eine {\"A}quivalenzrelation auf $X$ ist.\\
+(ii)  Folgern Sie, dass $=_{f}$ eine {\"A}quivalenzrelation auf $X$ ist.
+
+Zur Bedingung (i): Es sei eine {\"A}quivalenzrelation $c$ auf $Y$ gegeben. F{\"u}r $x,\tilde{x} \in X$ gelte $x~c_{f}~\tilde{x}$ genau dann, wenn $f(x)~c~f(\tilde{x})$ gilt.\\
+$x~c_{f}~x$ gilt, wenn $f(x)~c~f(x)$ gilt. Da $c$ eine {\"A}quivalenzrelation ist, ist dies erf{\"u}llt und somit ist $c_{f}$ reflexiv. \checkmark \\
+Aus $x~c_{f}~y$ und $y~c_{f}~z$ folgt $x~c_{f}~z$, wenn aus $f(x)~c~f(y)$ und $f(y)~c~f(z)$ $f(x)~c~f(z)$ folgt. Da $c$ eine {\"A}quivalenzrelation ist, ist dies erf{\"u}llt und somit ist $c_{f}$ transitiv. \checkmark \\
+Aus $x~c_{f}~y$ folgt $y~c_{f}~x$, wenn aus $f(x)~c~f(y)$ auch $f(y)~c~f(x)$ folgt. Da $c$ eine {\"A}quivalenzrelation ist, ist dies erf{\"u}llt und somit ist $c_{f}$ symmetrisch. \checkmark \\
+$c_{f}$ ist also eine {\"A}quivalenzrelation, weil sie reflexiv, transitiv und symmetrisch ist. $\Box$ \\
+
+Zur Bedingung (ii): Fur $x,\tilde{x} \in X$ gilt $x=_{f} \tilde{x}$, wenn $f(x)=f(\tilde{x})$.\\
+Ersetzen wir nun $c$ und $c_{f}$ aus a entsprechend mit $=$ und $=_{f}$, hei{\ss}t dass es $x=_{f} \tilde{x}$, wenn $f(x)=f(\tilde{x})$ gilt. Die {\"A}quivalenzrelation $=_{f}$ ist aber eine konkrete Relation f{\"u}r $c_{f}$ aus a), wobei '$=$' eine {\"A}quivalenzrelation, wie $c$, ist.
+\aufgabenteil{b}
+$T:AF \to B$\\
+Zur Bildgleichheit: F{\"u}r $a,b \in AF$ gilt $a=_{\bar{T}}$, wenn $T(a)=T(b)$ gilt.\\
+Das bedeutet, dass zwei aussagenlogische Formeln in dieser Relation stehen, wenn die potentiellen Wahrheitstafeln beider gleich sind, also die aussagenlogischen Formeln logisch {\"a}quivalent sind.\\
+Zum Homomorphiesatz: Es gibt eine induzierte Abbildung $\bar{T}: AF/=_{T} \to B, [a] \mapsto f(a)$, welche $T=\bar{T} \circ quo$ erf{\"u}llt.\\
+Also gilt f{\"u}r $a,b \in AF$ $a=_{T}B$, wenn ihre Wahrheitstafeln gleich sind, also die aussagenlogischen Formeln logische {\"a}quivalent sind. Eine {\"A}quivalenzrelation bez{\"u}glich $=_{T}$ entspricht der Gesamtheit der logisch {\"a}quivalenten aussagenlogischen Formeln, wobei die Quotientenmenge $AF/=_{T}$ die Einteilung in Gruppen von logisch {\"a}quivalenten aussagenlogischen Formeln widerspricht. Die Quotientenabbildung $auo: AF \to AF/=_{T}$ kann als Zuordnung von aussagenlogischen Formeln zu ihrer Klasse von logisch {\"a}quivalenten aussagenlogischen Formeln aufgefasst werden, wobei diesen Klassen durch die induzierte Abbildung $\bar{T}:AF/=_{T} \to B$ die entsprechenden Wahrheitstafeln zugeordnet werden.
+\end{document}
