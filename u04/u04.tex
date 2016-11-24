@@ -30,7 +30,7 @@
 
 \begin{center}
 \Large \textsc{Diskrete Strukturen} \\   % Fach
-\large Aufgabenblatt 4                        % Nummer das Blattes, nicht vergessen zu Ã¤ndern!
+\large Aufgabenblatt 4                        % Nummer das Blattes, nicht vergessen zu ändern!
 \end{center}
 \begin{center}
 \rule[0.5ex]{\textwidth}{0.6pt}\vspace*{-\baselineskip}\vspace{3.2pt}
@@ -65,21 +65,38 @@ Somit gilt $x~c~y$, wenn $x~d~y$ gilt. Ebenso gilt $y~c~z$, wenn $y~d~z$ gilt. W
 \aufgabe{24}
 \aufgabenteil{a}
 Es sei eine Abbildung $f:X \to Y$ gegeben.\\
-(i)  Es sei eine {\"A}quivalenzrelation $c$ auf $Y$ gegeben. F{\"u}r $x,\tilde{x} \in X$ gelte $x~c_{f} \in X$ genau dann, wenn $f(x)~c~f(x)$ gilt. Zeigen Sie, dass $c_{f}$ eine {\"A}quivalenzrelation auf $X$ ist.\\
-(ii)  Folgern Sie, dass $=_{f}$ eine {\"A}quivalenzrelation auf $X$ ist.
-
+(i)  Es sei eine {\"A}quivalenzrelation $c$ auf $Y$ gegeben. F{\"u}r $x,\tilde{x} \in X$ gelte $x~c_{f}~\tilde{x} \in X$ genau dann, wenn $f(x)~c~f(x)$ gilt. Zeigen Sie, dass $c_{f}$ eine {\"A}quivalenzrelation auf $X$ ist.\\
+(ii)  Folgern Sie, dass $=_{f}$ eine {\"A}quivalenzrelation auf $X$ ist. \\ \\
 Zur Bedingung (i): Es sei eine {\"A}quivalenzrelation $c$ auf $Y$ gegeben. F{\"u}r $x,\tilde{x} \in X$ gelte $x~c_{f}~\tilde{x}$ genau dann, wenn $f(x)~c~f(\tilde{x})$ gilt.\\
 $x~c_{f}~x$ gilt, wenn $f(x)~c~f(x)$ gilt. Da $c$ eine {\"A}quivalenzrelation ist, ist dies erf{\"u}llt und somit ist $c_{f}$ reflexiv. \checkmark \\
 Aus $x~c_{f}~y$ und $y~c_{f}~z$ folgt $x~c_{f}~z$, wenn aus $f(x)~c~f(y)$ und $f(y)~c~f(z)$ $f(x)~c~f(z)$ folgt. Da $c$ eine {\"A}quivalenzrelation ist, ist dies erf{\"u}llt und somit ist $c_{f}$ transitiv. \checkmark \\
 Aus $x~c_{f}~y$ folgt $y~c_{f}~x$, wenn aus $f(x)~c~f(y)$ auch $f(y)~c~f(x)$ folgt. Da $c$ eine {\"A}quivalenzrelation ist, ist dies erf{\"u}llt und somit ist $c_{f}$ symmetrisch. \checkmark \\
-$c_{f}$ ist also eine {\"A}quivalenzrelation, weil sie reflexiv, transitiv und symmetrisch ist. $\Box$ \\
-
+$c_{f}$ ist also eine {\"A}quivalenzrelation, weil sie reflexiv, transitiv und symmetrisch ist. $\Box$ \\ \\
 Zur Bedingung (ii): Fur $x,\tilde{x} \in X$ gilt $x=_{f} \tilde{x}$, wenn $f(x)=f(\tilde{x})$.\\
-Ersetzen wir nun $c$ und $c_{f}$ aus a entsprechend mit $=$ und $=_{f}$, hei{\ss}t dass es $x=_{f} \tilde{x}$, wenn $f(x)=f(\tilde{x})$ gilt. Die {\"A}quivalenzrelation $=_{f}$ ist aber eine konkrete Relation f{\"u}r $c_{f}$ aus a), wobei '$=$' eine {\"A}quivalenzrelation, wie $c$, ist.
+Ersetzen wir nun $c$ und $c_{f}$ aus a entsprechend mit $=$ und $=_{f}$, hei{\ss}t dass es $x=_{f} \tilde{x}$, wenn $f(x)=f(\tilde{x})$ gilt. Die {\"A}quivalenzrelation $=_{f}$ ist aber eine konkrete Relation f{\"u}r $c_{f}$ aus a), wobei '$=$' eine {\"A}quivalenzrelation, wie $c$,
+ist.$~~\Box$
+$\fbox{MUSTER}$
+$f:X \to Y$. $x,\tilde{x} \in X$. $x~c_{f}$ gilt genau dann wenn, $f(x)~c~f(\tilde{x})$.\\
+Beweis: Seien $x,x^{i},x^{ii} \in X$ mit $x~c_{f}~x^{i}$ und $x^{i}~c_{f}~x^{i}$\\
+$\implies f(x)~c~f(x^{i})$ und $f(x^{i})~c~f(x^{i})$\\
+$\implies f(x)~c~f(x^{i})$\\
+$\implies c_{f}$ transitiv.\\
+Seien $x,\tilde{x} \in X$ mit $x~c_{f}~\tilde{x}$.\\
+$\implies f(x)~c~f(\tilde{x})$\\
+$\implies f(\tilde{x})~c~f(x)$\\
+$\implies \tilde{x}~c_{f}~x$\\
+$\implies c_{f}$ ist symmetrisch.\\
+Insgesamt ist $c_{f}$ eine {\"A}quivalenzrelation auf $X$. Zur Bedingungen (ii):\\
+$=$ ist eine {\"A}quivalenzrelation auf $Y$, also ist $=_{f}$ nach 24a)i) eine {\"A}quivalenzrelaion auf $X$. 
 \aufgabenteil{b}
 $T:AF \to B$\\
 Zur Bildgleichheit: F{\"u}r $a,b \in AF$ gilt $a=_{\bar{T}}$, wenn $T(a)=T(b)$ gilt.\\
 Das bedeutet, dass zwei aussagenlogische Formeln in dieser Relation stehen, wenn die potentiellen Wahrheitstafeln beider gleich sind, also die aussagenlogischen Formeln logisch {\"a}quivalent sind.\\
 Zum Homomorphiesatz: Es gibt eine induzierte Abbildung $\bar{T}: AF/=_{T} \to B, [a] \mapsto f(a)$, welche $T=\bar{T} \circ quo$ erf{\"u}llt.\\
-Also gilt f{\"u}r $a,b \in AF$ $a=_{T}B$, wenn ihre Wahrheitstafeln gleich sind, also die aussagenlogischen Formeln logische {\"a}quivalent sind. Eine {\"A}quivalenzrelation bez{\"u}glich $=_{T}$ entspricht der Gesamtheit der logisch {\"a}quivalenten aussagenlogischen Formeln, wobei die Quotientenmenge $AF/=_{T}$ die Einteilung in Gruppen von logisch {\"a}quivalenten aussagenlogischen Formeln widerspricht. Die Quotientenabbildung $auo: AF \to AF/=_{T}$ kann als Zuordnung von aussagenlogischen Formeln zu ihrer Klasse von logisch {\"a}quivalenten aussagenlogischen Formeln aufgefasst werden, wobei diesen Klassen durch die induzierte Abbildung $\bar{T}:AF/=_{T} \to B$ die entsprechenden Wahrheitstafeln zugeordnet werden.
+Also gilt f{\"u}r $a,b \in AF$ $a=_{T}B$, wenn ihre Wahrheitstafeln gleich sind, also die aussagenlogischen Formeln logische {\"a}quivalent sind. Eine {\"A}quivalenzrelation bez{\"u}glich $=_{T}$ entspricht der Gesamtheit der logisch {\"a}quivalenten aussagenlogischen Formeln, wobei die Quotientenmenge $AF/=_{T}$ die Einteilung in Gruppen von logisch {\"a}quivalenten aussagenlogischen Formeln widerspricht. Die Quotientenabbildung $auo: AF \to AF/=_{T}$ kann als Zuordnung von aussagenlogischen Formeln zu ihrer Klasse von logisch {\"a}quivalenten aussagenlogischen Formeln aufgefasst werden, wobei diesen Klassen durch die induzierte Abbildung $\bar{T}:AF/=_{T} \to B$ die entsprechenden Wahrheitstafeln zugeordnet werden.\\
+$\fbox{MUSTER}$ Seien $F,G \in AF$, $F =_{AF}G$ genau dann, wenn $T(F)=T(G)$, d.h. $T \equiv G$. Nach Homomorphiesatz: $\bar{T}:AF/_{=_{T}} \to B, [F]_{=_{T}} \mapsto T(F)$ ist wohldefinierte, injektive Abbildung, die folgende Eigenschaften erf{\"u}llt: Mit $T:\bar{T} \circ quo$, $quo:AF \to AF_{=_{T}}, F \mapsto [F]_{=_{T}}$ f{\"u}r alle $F \in AF$. \\
+$[F]_{=_{T}} = \{G \in AF 
+| G=_{T}F\}=\{G\in AF \mid G\equiv F\}$.
+Somit ist $T$ surjektiv, wegen $Im(\bar{T}) = Im(T)$, auch $\bar{T}$ surjektiv. Insgesamt $\bar{T}$ ist eine Bijektion. $\fbox{x~c~y \iff [x] = [y]}$.
 \end{document}
+% Nummer des Blattes angepasst?
