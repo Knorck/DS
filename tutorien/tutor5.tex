@@ -1,0 +1,105 @@
+\documentclass[a4paper,graphics,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath, tabu}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{mathtools}
+\usepackage{setspace}
+\usepackage{graphicx,color,curves,epsf,float,rotating}
+
+\floatname{algorithm}{Algorithmus}
+
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\newcommand\abs[1]{\left\vert#1\right\vert}
+
+\newcommand\aufgabe[1]{\subsection*{Aufgabe #1}}
+\newcommand\aufgabenteil[1]{\subsubsection*{#1}}
+
+
+
+\pagestyle{empty}
+\begin{document}
+\noindent WS 2016/17        							\hfill DS Tutorium \\
+\noindent Woche \fbox{\textbf{6}}                      
+
+\aufgabe{1. Uhrengruppe}
+Sei $U=[1,12]$.\\
+\[ x+^{u}y = 
+\begin{cases}  x+^{\mathbb{Z}}y & \text{f{\"u}r }x,y \in U \text{ mit } x+^{\mathbb{Z}}y \in [1,12]\\
+				x+^{\mathbb{Z}}y-12 & \text{f{\"u}r }x,y \in U\text{ mit } x+^{\mathbb{Z}}y \in [13,24]\\\end{cases}
+\] \\
+$a:U \times U \to U$. $x~a~y=\{...\}$.\\ \\
+Assoziativit{\"a}t: $x,y,z \in U$. Z.z.: $xa(yaz) = (xay)az$.
+\[xa(yaz) = 
+\begin{cases}	xa(y+z), &\text{ falls } y+z \in [1,12]\\
+				xa(y+z-12), &\text{ falls } y+z \in [13,24]\\
+				x+y+z-12, &\text{ falls } y+z \in [13,24]\text{, }x+y+z-12 \in [13,24]\\
+				x+y+z-12-12, &\text{ falls } y+z \in [13,24] \text{, } x+y+z-12 \in [13,24]\\
+\end{cases}
+\]
+\[ =
+\begin{cases}	x+y+z, &\text{ falls }y+z \in [1,12] \text{, }x+y+z \in [1,12]\\
+				x+y+z-12, &\text{ falls }y+z \in [1,12] \text{, } x+y+z \in [13,24]\\
+				x+y+z-12, &\text{ falls }y+z \in [13,24] \text{, } x+y+z \in [13,24]\\
+				x+y+z-24, &\text{ falls }y+z \in ]13,24] \text{, } x+y+z \in [25,36]\\
+\end{cases}
+\]
+\[ =
+\begin{cases}	x+y+z, &\text{ falls }x+y+z \in [1,12]\\
+				x+y+z-12, &\text{ falls }x+y+z \in [13,24]\\
+				x+y+z-24, &\text{ falls }x+y+z \in [25,36]\\
+\end{cases}
+\]
+Daraus folgt: $(xay)az$\\ \\
+Kommutativi{\"a}t: $x,y \in U$.
+\[ xay =
+\begin{cases}	x+y, &\text{ falls }x+y \in [1,12]\\
+				x+y-12, &\text{ falls } x+y \in [13,24]\\
+\end{cases}
+\]
+\[ =
+\begin{cases}	x+y, &...\\
+				x+y-12, &...\\
+\end{cases}
+\]
+$= yax$\\ \\
+Existenz der Null: $x \in U$
+$xa12 = x+12-12 = x$, $12ax=12+x-12=x$.\\ \\
+Existenz der Negativen: $x \in [1,11]: x+12-x=12 \in [1,12]$.\\
+$xa(12-x)=x+12-x=12$\\
+$12+12=24 \in [13,24]$\\
+$12a12=12+12-12=12$\\
+Bei der Existenz der Negativen bzw. Null seien beide Seiten zu beachten!\\ \\
+$U$ ist abelsche Gruppe mit Addition $+^{u}=a$.
+
+\aufgabe{2. Boolsche Algebra}
+Seien Monoide $M_{1}, M_{2}$. Z.z.: $M_{1} \times M_{2}$ wird ein Monoid.\\
+Mit Multiplikation: $(x_{1},x_{2})(y_{1},y_{1})=(x_{1}y_{1},x_{2}y_{2})$.\\
+$\begin{aligned}$
+Sei $m:&(M_{1}\times M_{2}) \times (M_{1} \times M_{2}) \to M_{1} \times M_{2}$\\
+$&(x_{1},x_{2})~ m~ (y_{1},y_{2}) = (x_{1}y_{1},x_{2}y_{2})$ f{\"u}r $(x_{1},x_{2}),(y_{1},y_{2}) \in M_{1} \times M_{2} $
+$\end{aligned}$ \\ \\
+Assoziativit{\"a}t: \\
+F{\"u}r $(x_{1},x_{2}),(y_{1},y_{2}),(z_{1},z_{2}) \in M_{1} \times M_{2}$ ist\\
+$(x_{1},x_{2})~m~((y_{1},y_{2})~m~(z_{1},z_{2}))\\$
+$\begin{aligned}$
+$&=(x_{1},x_{2})~m~(y_{1}z_{1},y_{2}z_{2})\\$
+$&=(x_{1}(y_{1}z_{1}),x_{2}(y_{2}z_{2})\\$
+$&=((x_{1}y_{1})z_{1},(x_{2}y_{2}z_{2})\\$
+$&=(x_{1}y_{1},x_{2}y_{2})~m~(z_{1},z_{2})\\$
+$&=((x_{1}x_{2})~m~(y_{1},y_{2})~m~(z_{1},z_{2})$
+$\end{aligned}$\\ \\
+Existenz der Eins: \\
+F{\"u}r $(x_{1},x_{2}) \in M_{1} \times M_{2}$.\\
+\begin{aligned}
+$(1,1)~m~(x_{1},x_{2}) &= (1x_{1},1x_{2}) =(x_{1},x_{2})$\\
+$(x_{1},x_{2})~m~ (1,1) &= (x_{1}1,x_{2}1) = (x_{1},x_{1})$\\
+\end{aligned}\\
+$(1,1)$ ist neutrales Element in $M_{1} \times M_{2}$ bzgl. $m$.
+\end{document}
