@@ -1,0 +1,205 @@
+\documentclass[a4paper,graphics,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath, tabu}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{mathtools}
+\usepackage{setspace}
+\usepackage{graphicx,color,curves,epsf,float,rotating}
+\usepackage{fullpage}
+\floatname{algorithm}{Algorithmus}
+
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\newcommand\abs[1]{\left\vert#1\right\vert}
+
+\newcommand\aufgabe[1]{\subsection*{Aufgabe #1}}
+\newcommand\aufgabenteil[1]{\subsubsection*{#1}}
+
+
+
+\pagestyle{plain}
+\begin{document}
+\noindent WS 2016/17        							\hfill Simon Kaiser, 354692 \\
+\noindent Gruppe \fbox{\textbf{3}}                      \hfill Johannes Salentin, 367543 \\
+
+\begin{center}
+\Large \textsc{Diskrete Strukturen} \\   % Fach
+\large Aufgabenblatt 5                        % Nummer das Blattes, nicht vergessen zu ändern!
+\end{center}
+\begin{center}
+\rule[0.5ex]{\textwidth}{0.6pt}\vspace*{-\baselineskip}\vspace{3.2pt}
+\rule[0.5ex]{\textwidth}{1.6pt}\\
+\end{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Ab hier kommt der Text
+%   Neue Aufgabe mit \aufgabe{}
+%   Aufgabenteil mit \aufgabenteil{}
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\aufgabe{30}
+Es sei eine Teilmenge $X$ von $\mathbb{R}^{2}$ gegeben durch 
+\begin{center}
+$X = \{(x,y) \in \mathbb{R}^{2} | |x|+ |y| = 1\}$.
+\end{center}
+F{\"u}r $i \in [0,3]$ seien Abbildungen $r_{i},s_{i}: X \to X$ gegeben durch
+\begin{center}
+$r_{0}(x,y) = (x,y), s_{0}(x,y) = (x,-y)$,\\
+$r_{1}(x,y) = (y,-x), s_{1}(x,y) = (y,x)$,\\
+$r_{2}(x,y) = (-x,-y), s_{2}(x,y) = (-x,y)$,\\
+$r_{3}(x,y) = (-y,x), s_{3}(x,y) = (-y,-x)$.
+\end{center}
+Schlie{\ss}lich seien $r:=r_{1}$, $s:=s_{0}$ und $D:=\{r_{0}, r_{1}, r_{2}, r_{3}, s_{0}, s_{1}, s_{2}, s_{3}\}$.
+\aufgabenteil{a}
+Zeigen Sie exemplarisch an Hand der Abbildung $r$, dass die acht Elemente von $D$ wohldefinierte Abbildungen sind. \\ \\
+$r:=r_{1}:X \to X, (x,y) \mapsto (y,-x)$.\\
+Betrachte $g:X \to X, (x,y) \mapsto (-y,x)$\hfill $(=r_{1})$\\
+$r\circ g: r(g(x,y)) = r(-y,x) = (x,y) = id_{x}$.\\
+$g\circ f: g(r(x,y)) = g(y,-x) = (x,y) = id_{x}$.\\
+Die Abbildung ist sowohl links- als auch rechtsinvers und somit bijektiv. Das bedeutet, dass $r$ eine wohldefinierte Abbildung ist.
+\aufgabenteil{b}
+$r_{0}(x,y)=(x,y):$ Es passiert nichts. Der Punkt $(x,y)$ wird nicht ver{\"a}ndert.\\
+$r_{1}(x,y)=(y,-x):$ Der Punkt $(x,y)$ wird an der Winkelhalbierenden und an der x-Achse gespiegelt.\\
+$r_{2}(x,y)=(-x,-y):$ Der Punkt $(x,y)$ wird an der x- und y-Achse gespiegelt.\\
+$r_{3}(x,y)=(-y,x):$ Der Punkt $(x,y)$ wird an der Winkelhalbierenden und an der y-Achse gespiegelt.\\
+$s_{0}(x,y)=(x,-y):$ Der Punkt $(x,y)$ wird an der x-Achse gespiegelt.\\
+$s_{1}(x,y)=(y,x):$ Der Punkt $(x,y)$ wird an der Winkelhalbierenden gespiegelt.\\
+$s_{2}(x,y)=(-x,y):$ Der Punkt $(x,y)$ wird an der y-Achse gespiegelt.\\
+$s_{3}(x,y)=(-y,-x):$ Der Punkt $(x,y)$ wird an der Winkelhalbierenden, an der x- und y-Achse gespiegelt.
+\aufgabenteil{c}
+Zeigen Sie, dass die Abbildung
+\begin{center}
+$[0,3] \times [0,1] \to D, (i,j) \mapsto r^{i} \circ s^{j}$
+\end{center}
+eine wohldefinierte Bijektion ist und bestimmen Sie das Urbild von $s \circ r$ unter dieser Bijektion.\\
+Setze $g:D \to [0,3] \times [0,1], r^{i} \circ s^{j} \mapsto (i,j)$.\\
+\begin{center}
+$f \circ g: f(g(r^{i} \circ s^{j})) = f(i,j) = r^{i} \circ s^{j} = id_{D}$.\\
+$g \circ f: g(f(i,h)) = g(r^{i} \circ s^{j}) = (i,j) = id_{[0,3] \times [0,1]}$.\\
+\end{center}
+Daraus folgt, dass die gegebene Abbildung eine wohldefinierte Bijektion ist.\\ \\
+\emph{Urbild.}
+\begin{center}
+$f^{-1}(s \circ r)=\{(x,y) \in [0,3] \times [0,1] | f(x,y) \in \{s \circ r \} \} = \{(1,1)\}$.\\
+$s \circ r = s_{0} \circ r_{1}: s_{0}(r_{1}(x,y)) = s_{0}(y,-x) = (y,x)$.\\
+\end{center}
+$r^{0} \circ s^{0}:(x,y) ~~ $\\
+$r^{0} \circ s^{1}:(x,-y)~~ $\\ 
+$r^{1} \circ s^{0}:(y,-x)~~ $\\
+$r^{1} \circ s^{1}:(y,x)~~\checkmark $\\
+$r^{2} \circ s^{0}:(-x,-y)~~ $\\
+$r^{2} \circ s^{1}:(-x,y)~~ $\\
+$r^{3} \circ s^{0}:(-y,-x)~~ $\\
+$r^{3} \circ s^{1}:(-y,x)~~ $
+\aufgabenteil{d}
+Zeigen Sie, dass $(g,f) \mapsto g \circ f$ eine wohldefinierte Verkn{\"u}pfung auf $D$ ist und dass $D$ zusammen mit dieser Verkn{\"u}pfung eine nicht-kommutative Gruppe bildet. Vermeiden Sie dabei allzu gro{\ss} Fallunterscheidungen. Geben Sie eine kurze geometrische Interpretation der Nicht-Kommutativit{\"a}t an.\\
+$a:D\times D \to D, (g,f) \mapsto g\circ f$.\\
+Setze $b: D \to D \times D, g\circ f \mapsto (g,f)$.
+\begin{center}
+$a \circ b : a(b(g \circ f)) = a(g,f) = g \circ f = id_{D}$,\\
+$b \circ a : b(a(g,f)) = b(g \circ f) = (g,f) = id_{D \times D}$.
+\end{center}
+Die gegebene Verkn{\"u}pfung auf D ist wohldefiniert, da sie bijektiv ist. $\hfill{\Box}$ \\
+\emph{Assoziativit{\"a}t.}
+\begin{center}
+$xy(yaz)=xa(y \circ z) = x\circ(y\circ z)$\\
+$_{\text{Assoz. bei Komposita}}=(x\circ y) \circ z$\\
+$(xay) \circ z = (xay)az ~~\Box$
+\end{center}
+\emph{Existenz der Eins.}
+\begin{center}
+$xae=eax=x$ mit $e=r_{0}=id:(x,y) \mapsto(x,y)$.\\
+$xae=x\circ e = x \circ r_{0} : x(r_{0}(x,y)) = (x,y)$. $\checkmark$\\
+$eax = e\circ x= r_{0} \circ x : r_{0}(x(x,y)) = x(x,y)$. $\checkmark$
+\end{center}
+Das neutrale Element ist die Identit{\"a}tsabbildung $id=r_{0}$.\\ \\
+\emph{Existenz der Inversen}\\
+$r_{0}$ und $r_{2}$ sind zu sich selbst invers, da $r_{0}^{2}= (x,y)$ und $r_{2}^{2}=(x,y)$.\\
+Es gilt $(r_{2}(r_{2}(x,y)) = r_{2}(-x,-y) = (x,y))$.\\ 
+Zudem sind $r_{1}$ und $r_{3}$ gegenseitig Inverse voneinander.
+\begin{center}
+$r_{1} \circ r_{3}: r_{1}(r_{3}(x,y)) = r_{1}(-y,x) = (x,y)$,\\
+$r_{3} \circ r_{1}: r_{3}(r_{1}(x,y)) = r_{3}(y,-x) = (x,y)$.
+\end{center}
+Weiterhin sind alle $s$ zu sich selbst invers.
+\begin{center}
+$s_{0}(s_{0}(x,y)) &= s_{0}(x,-y) = (x,y)$,\\
+$s_{1}(s_{1}(x,y)) &= s_{1}(y,x) = (x,y)$,\\
+$s_{2}(s_{2}(x,y)) &= s_{2}(-x,y) = (x,y)$,\\
+$s_{3}(s_{3}(x,y)) &= s_{3}(-y,-x) =(x,y)$. 
+\end{center}
+$\hfill{\Box}$\\
+\emph{Nicht-Kommutativit{\"a}t.}\\
+Betrachtet man einen Punkt im zweiten oder vierten Quadranten und spiegelt diesen an der Winkelhalbierenden, so landet man im jeweils anderen Quadranten $(2 \to 4, 4 \to 2)$, man spiegelt den Punkt also auf die andere Seite der y-Achse. Dies f{\"u}hrt bei umgekehrter Verkn{\"u}pfung zu unterschiedlichen Punkten. Hier kommt es auf die Reihenfolge der Verkn{\"u}pfungen an.\\
+Insgesamt bildet $D$ mit der Verkn{\"u}pfung eine nicht-kommutative Gruppe.
+\aufgabe{31}
+Zeigen Sie, dass das kartesische Produkt $\mathbb{R} \times \mathbb{R}$ zu einem kommutativen Ring wird, mit Addition und Multiplikation. $(a_{1},a_{2}),(b_{1},b_{2}) \in \mathbb{R} \times \mathbb{R}$. Ist $\mathbb{R} \times \mathbb{R}$ mit dieser Struktur ein K{\"o}rper?\\ \\
+Es gilt $(a_{1},a_{2})+(b_{1},b_{2}) = (a_{1}+b_{1}, a_{2}+b_{2})$ und
+$(a_{1},a_{2})(b_{1},b_{2}) = (a_{1}b_{1},a_{2}b_{2})$.\\
+Zu zeigen ist, dass $((\mathbb{R} \times \mathbb{R}),+,\cdot)$ ein kommutativer Ring und ein K{\"o}rper ist.
+\emph{Assoziativit{\"a}t.}
+\begin{center}
+$\begin{aligned}$
+$&(a_{1},a_{2})+((b_{1},b_{2})+(c_{1},c_{2}))$\\
+$=&(a_{1},a_{2})+(b_{1}+c_{1},b_{2}+c{2})$\\
+$=&(a_{1}+(b_{1}+c_{1}),a_{2}+(b_{2}+c_{2}))$\\
+_{\text{Ass. auf }\mathbb{R}} $&=((a_{1}+b_{1})+c_{1},(a_{2}+b_{2})+c_{2})$\\
+$=&(a_{1}+b_{1},a_{2}+b_{2})+(c_{1},c_{2})$\\
+$=&((a_{1},a_{2})+(b_{1},b_{2}))+(c_{1}+c_{2})~~\Box~~ _{\text{Analog f{\"u}r } \cdot\text{.}}$
+$\end{aligned}$
+\end{center}
+\emph{Kommutativit{\"a}t.}
+\begin{center}
+$\begin{aligned}$
+$&(a_{1},a_{2})+(b_{1},b{2}) = (a_{1}+b_{1},a_{2}+b_{2})$\\
+$_{\text{Komm.ges }+\text{ auf }\mathbb{R}}&=(b_{1}+a_{1},b_{2}+a_{2}) = (b_{1},b_{2})+(a_{1},a_{2})~~\Box~~_{\text{Analog f{\"u}r } \cdot\text{.}}$\\
+$\end{aligned}$
+\end{center}\\ \\
+\emph{Neutrales Element.}\\
+F{\"u}r die Addition $+$ sei $(0,0)$ das neutrale Element.\\
+\begin{center}
+$(a_{1},a_{2})+(0,0) = (a_{1}+0,a_{2}+0) = (a_{1},a_{2})$\\
+\end{center}
+Wegen des Kommutativgesetzes gilt dies auch in anderer Richtung. $\Box$\\
+F{\"u}r die Multiplikation $\cdot$ sei $(1,1)$ das neutrale Element.\\
+\begin{center}
+$(a_{1},a_{2})\cdot(1,1)=(a_{1}\cdot1,a_{2}\cdot1) = (a_{1},a_{2})$\\
+\end{center}
+Wegen des Kommutativgesetzes gilt dies auch in anderer Richtung. $\Box$\\ \\
+\emph{Negative bzgl. $+$}.\\
+In $\mathbb{R}$ existiert eine Negative f{\"u}r alle Elemente.
+\begin{center} $\begin{aligned}$
+$&(a_{1},a_{2})+(-a_{1},-a_{2})$\\
+$=&(a_{1}+(-a_{1}),a_{2}+(-a_{2})) = (0,0)$
+$\end{aligned}$
+\end{center} \\
+Wegen des Kommutativgesetzes gilt dies auch in anderer Richtung. $\Box$\\ \\
+\emph{Distributivit{\"a}t.}
+\begin{center} 
+$\begin{aligned}$
+$&(a_{1},a_{2})\cdot((b_{1},b_{2})+(c_{1},c_{2}))$\\
+$=&(a_{1},a_{2})\cdot(b_{1}+c_{1},b_{2}+c_{2})$\\
+$=&(a_{1}\cdot(b_{1}+c_{1}),a_{2}\cdot(b_{2}+c_{2}))$\\
+$_{\text{Distr. {\"u}. }\mathbb{R}} =& (a_{1}b_{1}+a_{1}c_{1},a_{2}b_{2}+a_{2}c_{2})$\\
+$=&(a_{1}b_{1},a_{2}b_{2})+(a_{1}c_{1},a_{2}c_{2})$\\
+$=&(a_{1},a_{2})\cdot(b_{1},b_{2})+(a_{1},a_{2})\cdot(c_{1},c_{2})~~\Box~~$\\ \\
+\end{center}
+$\end{aligned}$\\
+\emph{Inverse bzgl. $\cdot$.}\\
+\text{In }$\mathbb{R} \setminus \{0\}$ existiert ein Inverses f{\"u}r jedes Element, wober $a_{1},a_{2} \in \mathbb{R}$.
+\begin{center}
+$(a_{1},a_{2})\cdot(a_{1}^{-1},a_{2}^{-1}) = (a_{1}\cdot a_{1}^{-1},a_{2}\cdot a_{2}^{-1}) = (1,1)$.
+\end{center}\\
+Wegen des Kommutativgesetzes gilt dies auch in anderer Richtung. $\Box$\\ \\
+$((\mathbb{R} \times \mathbb{R}),+,\cdot)$ ist ein K{\"o}rper und zudem ein kommutativer Ring per Definition ($6.42 (a),(b),(c)$).
+\end{document}
+% Nummer des Blattes angepasst?
