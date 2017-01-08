@@ -1,0 +1,101 @@
+\documentclass[a4paper,graphics,11pt]{article}
+
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath, tabu}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{mathtools}
+\usepackage{setspace}
+\usepackage{graphicx,color,curves,epsf,float,rotating}
+\usepackage{fullpage}
+
+\floatname{algorithm}{Algorithmus}
+
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\newcommand\abs[1]{\left\vert#1\right\vert}
+
+\newcommand\aufgabe[1]{\subsection*{Aufgabe #1}}
+\newcommand\aufgabenteil[1]{\subsubsection*{#1}}
+
+
+
+\pagestyle{empty}
+\begin{document}
+\noindent WS 2016/17        							\hfill Simon Kaiser, 354692 \\
+\noindent Gruppe \fbox{\textbf{3}}                      \hfill Johannes Salentin, 367543 \\
+
+\begin{center}
+\Large \textsc{Diskrete Strukturen} \\   % Fach
+\large Aufgabenblatt 9
+\end{center}
+\begin{center}
+\rule[0.5ex]{\textwidth}{0.6pt}\vspace*{-\baselineskip}\vspace{3.2pt}
+\rule[0.5ex]{\textwidth}{1.6pt}\\
+\end{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Ab hier kommt der Text
+%   Neue Aufgabe mit \aufgabe{}
+%   Aufgabenteil mit \aufgabenteil{}
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\aufgabe{53}
+Es sei $R=\mathbb{Z}$ oder $R=K[X]$ für einen Körper $K$. Ferner seien $m,a,b \in R$ gegeben.
+\aufgabenteil{a} Zeigen Sie, dass es genau dann ein $x \in R$ mit $xa\equiv_{m}b$ gibt, wenn $gcd(a,m)|b$ gilt.\\
+Zu zeigen: Es gibt genau dann ein $x \in R$ mit $xa\equiv_{m}b$, wenn $gcd(a,m)|b$.
+\begin{center}
+$xa\equiv_{m}b \iff xa=b+ym \iff xa+ym=b$.
+\end{center}
+Nach 10.26a besitzt diese Gleichung eine Lösung, wenn $gcd(a,m)|b$ ist.
+Somit ist die Aussage gezeigt. \hfill{$\Box$}
+\aufgabenteil{b} Es seien $p,q,r \in R$ mit $a=p \cdot gcd(a,m)$, $m=q \cdot gcd(a,m)$, $b=r \cdot gcd(a,m)$ sowie $x'\in R$ mit $x'p\equiv_{q} 1$ gegeben. Zeigen Sie, dass
+\[ \{x \in R |xa \equiv_{m}b\}=
+	\begin{cases}
+	R, & \text{falls }(a,m)=(0,0),\\
+	rx'=Rq, & \text{falls }(a,m)\neq(0,0)
+	\end{cases}
+\]
+ist.\\
+$x' \in R$ mit $x'p \equiv_{q}1$. $xa\equiv_{m}b \iff xa-ym=b$.\\
+Nach 10.26b gilt:
+\[ \{(x,y) \in R \times R | xa-ym=b\}=
+	\begin{cases}
+	R \times R, & \text{falls }(a,m)=(0,0),\\
+	(rx'+zq, ry'-zp), & \text{falls }(a,m)\neq(0,0)
+	\end{cases}
+\] für $z \in R$
+\[\rightarrow \{x \in R|xa-ym=b\}=
+	\begin{cases}
+	R, & \text{falls }(a,m)=(0,0),\\
+	rx'+zq &\text{falls }(a,m)\neq(0,0)
+	\end{cases}
+\] für $z \in R$
+\[\implies \{x \in R|xa\equiv_{m}b\}=
+	\begin{cases}
+	R, & \text{falls }(a,m)=(0,0),\\
+	rx'+Rq, & \text{falls }(a,m)\neq(0,0). \hfill{\Box}
+	\end{cases}
+\]
+Damit ist die Aussage gezeigt.
+\aufgabe{54}
+\aufgabenteil{a} Bestimmen Sie einen Restklassenkörper von $\mathbb{F}_{2}[X]$ mit 16 Elementen.
+$K[X]/f=\{[r]|K[X]_{<~deg~f}\}$ ist eine Transversale gemäß 11.16.\\
+Gesucht ist ein Körper mit $|K|^{deg~f}$ Elementen, wobei $f$ irreduzibel ist, also keine Nullstellen besitzt.\\
+$F_{2}[X]/_{X^4+X+1}=\{a+b[X]+c[X]^{2}+d[X]^{3}|a,b,c,d \in F_{2}\} \implies 2^{4} = 16$ Elemente.\\
+$0^{4}+0+1=1, 1^{4}+1+1=3=1 \implies$ Keine Nullstelle in $F_{2}$. Also ist $F_{2}[X]/_{X^4+X+1}$ ein Körper.
+\aufgabenteil{b} Bestimmen Sie einen Restklassenkörper von $\mathbb{F}_{4}[X]$ mit 16 Elementen.\\
+$F_{4}[X]/X^2+1=\{a+b[X]|a,b \in \mathbb{F}_{4}\} \implies 4^{2} = 16$ Elemente.\\
+$0^{2}+1=1, 1^{2}+1=2, 2^{2}+1=5=1, 3^{2}+1=10=2, 4^{2}+1=15=3 \implies$ Keine Nullstelle in $F_{4}[X]/X^2+1$, also liegt ein Körper vor.
+
+
+
+\end{document}
+% Nummer des Blattes angepasst?
