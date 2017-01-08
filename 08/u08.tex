@@ -1,0 +1,180 @@
+\documentclass[a4paper,graphics,11pt]{article}
+
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath, tabu}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{mathtools}
+\usepackage{setspace}
+\usepackage{graphicx,color,curves,epsf,float,rotating}
+\usepackage{fullpage}
+\floatname{algorithm}{Algorithmus}
+
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\newcommand\abs[1]{\left\vert#1\right\vert}
+
+\newcommand\aufgabe[1]{\subsection*{Aufgabe #1}}
+\newcommand\aufgabenteil[1]{\subsubsection*{#1}}
+
+
+
+\pagestyle{empty}
+\begin{document}
+\noindent WS 2016/17        							\hfill Simon Kaiser, 354692 \\
+\noindent Gruppe \fbox{\textbf{3}}                      \hfill Johannes Salentin, 367543 \\
+
+\begin{center}
+\Large \textsc{Diskrete Strukturen} \\   % Fach
+\large Aufgabenblatt 8                        % Nummer das Blattes, nicht vergessen zu ändern!
+\end{center}
+\begin{center}
+\rule[0.5ex]{\textwidth}{0.6pt}\vspace*{-\baselineskip}\vspace{3.2pt}
+\rule[0.5ex]{\textwidth}{1.6pt}\\
+\end{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Ab hier kommt der Text
+%   Neue Aufgabe mit \aufgabe{}
+%   Aufgabenteil mit \aufgabenteil{}
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\aufgabe{48}
+Es sei $n \in \mathbb{N}_{0}$ und $\pi \in S_{n}$ mit $O:=[1,n] / \pi$ gegeben.
+\aufgabenteil{a}
+Jede Permutation ist eine Verkettung von Nachbartranspositionen
+\begin{itemize}
+\item Auf einer Bahn finden zyklische Vertauschungen statt. Also braucht man $m-1$ Transpositionen um eine Bahn der Länge $m$ darzustellen. Insgesamt benötigt man somit für eine Permutation die Anzahl von Transpositionen von\\
+$\displaystyle\sum_{o \in O} (|o|-1)$, wobei $|o|$ die Länge einer Bahn ist.
+\item Man kann Transpositionen weiter in Nachbartranspositionen zerlegen. Mit 12.20(b) benötigt man $2 \cdot |i-j|-1$ Nachbartranspositionen für eine Transposition.\\
+Nach 12.25 ist $Inv((j,j+1))=\{(j,j+1)\}$ und damit gilt\\ $|Inv(i,j)|=2 \cdot |i-j|-1$ mit $(i,j) \in [1,n] \times [1,n]$.
+\end{itemize}
+Da eine Transposition in eine ungerade Anzahl von Nachbartranspositionen zerlegt werden kann und somit eine Transposition eine ungerade Anzahl von Fehlständen erzeugt, ist das Signum $-1$ für eine ungerade Anzahl von Transpositionen. Jede Permutation $\pi \in S_{n}$ lässt sich nun durch $\sum_{o \in O} (|o|-1)$ Transpositionen darstellen ($1.$):
+\begin{center}
+$sgn(\pi)=(-1)^{\sum_{o \in O} (|o|-1)}$.
+\end{center}
+$|o|$ ist die Länge einer Bahn. Ist diese Anzahl gleich 1, so kann diese Bahn einen Fehlstand haben und fällt weg. Es genügt also die Bahnen mit Länge $>1$ zu betrachten. 
+\begin{center}
+$(-1)^{\sum_{o \in O} (|o|-1)}=(-1)^{\sum_{o \in O,|o| > 1} (|o|-1)}$.
+\end{center}
+Außerdem reicht es aus, die Bahnen mit gerader Elementenzahl zu betrachten, da diese durch eine ungerade Anzahl von Transpositionen dargestellt werden können ($1.$).\\
+Da $sgn(\pi)=-1$ für ungerade viele Transpositionen, gilt
+\begin{center}
+$sgn(\pi)=(-1)^{|\{o \in O | |o| ist gerade\}|}$.
+\end{center}
+Auf einer einzelnen Bahn werden die Elemente zyklisch vertauscht. Das heißt, eine Bahn der Länge $m$ kann durch $m-1$ Transpositionen dargestellt werden. Wie bereits oben gezeigt, sind Transpositionen ungerade. Mit der Verkettungseigenschaft folgt:
+\begin{center}
+$sgn(\delta_{k})=(-1)^{m_{k}-1}$, wobei $ \pi=\displaystyle\prod_{k \in [1,|o|]}\delta_{k}$ und $ n=\displaystyle\sum_{k\in [1,|o|]} m_{k}$\\
+$\implies sgn(\pi)=\displaystyle\prod_{k \in [1, |o|]} sgn(\delta_{k})=\displaystyle\prod_{k \in [1,|o|]} (-1)^{m_{k}-1}=(-1)^{\sum_{k \in [1,|o|]}m_{k}-1}$\\
+$= (-1)^{n-|o|}$.
+\end{center}
+Insgesamt gilt folglich:
+\begin{center}
+$sgn(\pi)=(-1)^{\sum_{o \in O}(|o|-1)}=(-1)^{\sum_{o \in O,|o| > 1}(|o|-1)}$\\
+$=(-1)^{n-|o|}=(-1)^{|\{o \in O| |o|\text{ ist gerade}\}|}$.
+\end{center}
+\aufgabenteil{b}
+\begin{center}
+$(i) \iff \pi$ ist gerade $\iff|Inv(\pi)|$ ist gerade $\iff(-1)^{Inv(\pi)}=1=sgn(\pi)\iff (ii)$.
+\end{center}
+Wenn die Permutation $\pi$ gerade ist, muss auch die Anzahl der Fehlstände gerade sein. Das bedeutet wiederum, dass $sgn(\pi)=1$ ist. Also sind die Aussagen (i) und (ii) äquivalent.\\
+Nach Teil $a$ gilt $sgn(\pi)=(-1)^{|\{o \in O| |o|\text{ ist gerade}\}|}$. Mit der Voraussetzung $(iii)$ gilt $sgn(\pi)=(-1)^{|\{o \in O | |o|\text{ ist gerade}\}|}=1$, was äquivalent zu $(ii)$ und damit zu $(i)$ ist.\\
+Wenn die Permutation $\pi$ ein Kompositum einer geraden Anzahl von Transpositionen ist, so muss $\displaystyle\sum_{o \in o}(|o|-1)$ gerade sein (gemäß $a$).
+\begin{center}
+$sgn(\pi)=(-1)^{\sum_{o \in O}(|o|-1)}=1$ 
+\end{center}
+und somit äquivalent zu $(ii)$ und damit zu $(i)$ und $(iii)$.
+Insgesamt sind folglich die Aussagen $(i)-(iv)$ äquivalent.
+\aufgabe{49}
+Es seien Gruppen $G$ und $H$ gegeben. Ein Gruppenhomomorphismus von $G$ nach $H$ ist eine Abbildung $ \varphi: G\to H$ derart, dass für $x,x' \in G$ stets
+\begin{center}
+$\varphi(x \cdot^{G}x')= \varphi(x) \cdot^{H} \varphi(x')$
+\end{center}
+gilt, kurz geschrieben als $\varphi(xx')=\varphi(x)\varphi(x')$.\\
+Es seien abelsche Gruppen $A$ und $B$ gegeben. Ein Homomorphismus abelscher Gruppen von $A$ nach $B$ ist ein Gruppenhomomorphismus $\varphi: A \to B$. 
+\aufgabenteil{a}
+\begin{itemize}
+\item Für $n \in \mathbb{N}_{0}, \pi \in S_{n}$ ist $S_{n} \to S_{n}, \sigma \mapsto \pi \sigma$ ein Gruppenhomomorphismus.\\
+\end{itemize}
+Zu zeigen ist $\varphi(x\circ x')=\varphi(x) \circ \varphi(x')$.
+\begin{center}
+$\pi \circ x \circ x'=(\pi \circ x')$\\
+$\iff_{\text{Assoziativgesetz}} \pi \circ x \circ x' = \pi \circ x \circ \pi \circ x'$. 
+\end{center}
+Seien
+$\pi = 
+	\begin{pmatrix}
+	1&2&3 \\
+	2&3&1
+	\end{pmatrix}$
+, $x =
+	\begin{pmatrix}
+	1&2&3 \\
+	1&3&2
+	\end{pmatrix}$
+, $x' =
+	\begin{pmatrix}
+	1&2&3 \\
+	3&2&1
+	\end{pmatrix}$.
+\begin{center}
+$\pi \circ x \circ x' = 
+	\begin{pmatrix}
+	1&2&3 \\
+	3&1&2
+	\end{pmatrix}$
+$\neq \begin{pmatrix}
+	1&2&3 \\
+	2&3&1
+	\end{pmatrix}$
+$= \pi \circ x \circ \pi \circ x'$.
+\end{center}
+Daraus folgt, dass kein Gruppenhomomorphismus vorliegt.
+\begin{itemize}
+\item Für $n \in \mathbb{N}_{0}, \pi \in S_{n}$ ist $S_{n} \to S_{n}, \sigma \mapsto \pi \sigma \pi^{-1}$ ein Gruppenhomomorphismus.
+\end{itemize}
+Zu zeigen ist $\varphi(x \circ x') = \varphi(x) \circ \varphi(x')$.
+\begin{center}
+$\pi \circ (x \circ x') \circ \pi^{-1} = (\pi \circ x \circ \pi^{-1}) \circ \pi \circ x' \circ \pi^{-1}$\\
+$\iff_{\text{ Ass.ges}} \pi \circ x \circ x' \circ \pi^{-1}= \pi \circ x \circ \pi^{-1} \circ \pi \circ x' \circ \pi^{-1}$\\
+$\iff \pi \circ x \circ x' \circ \pi^{-1} = \pi \circ x \circ x' \circ \pi^{-1}$.
+\end{center}
+Daraus folgt, dass ein Gruppenhomomorphismus vorliegt.
+\begin{itemize}
+\item Für $a \in \mathbb{Z}$ ist $\mathbb{Z} \to \mathbb{Z}, x \mapsto ax$ ein Homomorphismus abelscher Gruppen.
+\end{itemize}
+Zu zeigen ist $\varphi(x+x')=\varphi(x)+\varphi(x')$ gelten.
+\begin{center}
+$a+x+x'=a+x+a+x'$\\
+$\iff_{\text{ K.ges}} a+x+x'\neq a+a+x+x'$. 
+\end{center}
+Daraus folgt, dass kein Homomorphismus abelscher Gruppen vorliegt.
+
+\aufgabenteil{b}
+Es sei ein Gruppenhomomorphismus $\varphi:G \to H$ gegeben.
+\begin{itemize}
+\item Es ist $\varphi(1)=1$.\\
+$1 = \varphi(1) = \varphi(1 \cdot 1) = _{\text{ Gr.homo.}} \varphi(1) \cdot \varphi(1) = 1 \cdot 1 = 1$. $\Box$
+\item Für $x \in G$ ist $\varphi(x^{-1})=\varphi(x)^{-1}$.\\
+$e_{H}= \varphi(e_{G})=\varphi(x \cdot x^{-1})=_{\text{ Gr.homo.}} \varphi(x) \cdot \varphi(x^{-1})$\\
+$\implies \varphi(x^{-1})$ ist Inverses zu $\varphi(x) \implies \varphi(x^{-1})=\varphi(x)^{-1}$. $\Box$
+\item Genau dann ist $\varphi$ injektiv, wenn für $x \in G$ aus $\varphi(x)=1$ bereits $x=1$ folgt.\\
+Gemäß (i) gilt $\varphi(1)=1$. Injektivität ist erfüllt, wenn $\varphi(x)=\varphi(x') \implies x=x'$.	Kein anderes Element darf noch auf 1 abbilden.\\
+$\varphi(x)=1 \implies x=1$. Also bildet nur ein Element auf 1 ab, da $\varphi(1)=1$ gilt.
+\item Es ist $lm~\varphi$ eine Untergruppe von $H$.
+$lm~\varphi=\{\varphi(x) \in H | x \in G\} \subseteq H$.\\
+Die Gruppenaxiome Assoziativität, die Existenz eines neutralen Elements und die Existenz eines inversen Elements müssen erfüllt sein.\\
+\emph{Assoziativität} gilt, da $Im~\varphi \subseteq H$.\\
+\emph{Neutrales Element} ist $\varphi(1)=1$. Neutrales Element $\varphi(e_{G})=e_{H}$ immer im Bild enthalten.\\
+\emph{Inverses Element} ist $\varphi(x^{-1})$ als Inverses zu $\varphi(x)$ (ii) für ein beliebiges $x \in G$.\\
+Ergo ist $Im~\varphi$ eine Untergruppe von $H$.
+\end{itemize}
+\end{document}
+% Nummer des Blattes angepasst?
