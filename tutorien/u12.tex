@@ -1,0 +1,136 @@
+\documentclass[a4paper,graphics,11pt]{article}
+
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath, tabu}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{mathtools}
+\usepackage{setspace}
+\usepackage{graphicx,color,curves,epsf,float,rotating}
+\usepackage{fullpage}
+
+\floatname{algorithm}{Algorithmus}
+
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\newcommand\abs[1]{\left\vert#1\right\vert}
+
+\newcommand\aufgabe[1]{\subsection*{Aufgabe #1}}
+\newcommand\aufgabenteil[1]{\subsubsection*{#1}}
+\newcommand{\dotcup}{\ensuremath{\mathaccent\cdot\cup}}
+
+
+\pagestyle{empty}
+\begin{document}
+\begin{center}Tutorium Woche \fbox{12}\end{center}
+
+\aufgabe{60}
+Es sei ein Körper $K$ gegeben. Ferner seien $A \in K^{4 \times 4}, b \in K^{4 \times 1}$ gegeben durch \begin{center}
+$A =\begin{pmatrix}
+	-1 & 0 & -5 & -9 \\
+	-4 & -2 & 4 & -10 \\
+	-4 & -4 & 4 & -11 \\
+	2 & 4 & 4 & 12
+\end{pmatrix}$,
+$b =\begin{pmatrix}
+	5 \\ 6 \\ 4 \\ -1
+\end{pmatrix}$. \end{center}
+Bestimmen Sie $Sol(A,b)$.\\
+\emph{Hinweis}. Machen Sie Fallunterscheidungen von der Form "Wenn 2=0 in $K$ ist, dann gilt [...]".\\
+
+$\begin{pmatrix}
+	-1 & 0 & -5 & -9 | 5\\
+	-4 & -2 & 4 & -10 | 6 \\
+	-4 & -4 & 4 & -11 | 4\\
+	2 & 4 & 4 & 12 | -4
+\end{pmatrix}
+add_{2,1,-4}, add_{3,1,-4}, add_{4,1,2}$\\
+$= \begin{pmatrix}
+	-1 & 0 & -5 & -9 & 5 \\
+	0 & -2 & 24 & 26 & -14 \\
+	0 & -4 & 24 & 25 & -16 \\
+	0 & 4 & -6 & -6 & 6
+\end{pmatrix}
+add_{4,2,2},add_{3,2,-2}$\\
+$= \begin{pmatrix}
+	-1 & 0 & -5 & -9 |5 \\
+	0 & -2 & 24 & 26 | -14 \\
+	0 & 0 & -24 & -27 | 12 \\
+	0 & 0 & 42 & 46 | -22
+\end{pmatrix}
+add_{4,3,2}
+= \begin{pmatrix}
+1 & 0 & -5 & -9 | 5 \\
+0 & -2 & 24 & 25 | -14 \\
+0 & 0 & -24 & -27 | 12 \\
+0 & 0 & -6 & -8 | 2 
+\end{pmatrix}
+add_{3,4,-4},sw_{3,4},mult_{1,-1},mult{2,-1},\\mult_{3,-1}
+= \begin{pmatrix}
+1 & 0 & 5 & 9 | -5 \\
+0 & 2 & -24 & -26 | 14 \\
+0 & 0 & 6 & 8 | -2 \\
+0 & 0 & 0 & 5 | 4 
+\end{pmatrix}.$\\ \\
+Sei 2=0 in $K$.\\ \\
+$\begin{pmatrix} 1 & 0 & 1 & 1 & -1\\0 & 0 & 0 & 1 & 0\\0 & 0 & 0 & 0 & 0\\0 & 0 & 0 & 1 & 0 \end{pmatrix}
+add_{4,2,1}... \mapsto \begin{pmatrix} 1 & 0 & 1 & 1 & -1\\0 & 0 & 0 & 1 & 0\\0 & 0 & 0 & 0 & 0\\0 & 0 & 0 & 0 & 0 \end{pmatrix}$.\\
+$Sol(A,b)=\{\begin{pmatrix} 1+b \\ a \\ b \\ 0\end{pmatrix}| a,b \in K\}=\begin{pmatrix} 1 \\ 0 \\ 0 \\ 0 \end{pmatrix} + a \cdot \begin{pmatrix} 0 \\ 1 \\ 0 \\ 0 \end{pmatrix} + k \begin{pmatrix} -1 \\ 0 \\ 1 \\ 0 \end{pmatrix}$. \\ \\
+Sei 3=0 in $K$. \\ \\
+$\begin{pmatrix} 1 & 0 & -1 & 1 & 0 \\ 0 & -1 & 0 & 1 & -1 \\ 0 & 0 & 0 & 1 & -1 \\ 0 & 0 & 0 & -1 & 1 \end{pmatrix}
+add_{1,3,-1},add_{2,3,-1},add_{4,3,1},mult_{2,-1} \mapsto
+\begin{pmatrix} 1 & 0 & -1 & 0 & 1 \\ 0 & -1 & 0 & 0 & 0 \\ 0 & 0 & 0 & 1 & -1 \\ 0 & 0 & 0 & 0 & 0 \end{pmatrix}$.\\
+$Sol(A,b)=\{\begin{pmatrix} 1+a \\ 0 \\ a \\ -1 \end{pmatrix}| a \in K\}=
+\begin{pmatrix} 1 \\ 0 \\ 0 \\ -1 \end{pmatrix} + k \cdot \begin{pmatrix} 1 \\ 0 \\ 1 \\ 0 \end{pmatrix}$. \\ \\
+Sei 5 = 0 in $K$. \\ \\
+$\begin{pmatrix} 1 & 0 & -1 & 1 & 2 \\ 0 & 2 & 0 & 1 & 2 \\ 0 & 0 & 1 & -2 & 0 \\ 0 & 0 & 0 & 0 & -1 \end{pmatrix}$.\\
+Für $x\in Sol(A,b)$ gilt -1=0 in $K$. Widerspruch. \\
+$Sol(A,b)=\{\}$.\\ \\
+Sei $2 \neq 0, 3 \neq 0, 5 \neq 0$ in $K$. \\ \\
+$\begin{pmatrix} 1 & 0 & -1 & 1 & -3 \\ 0 & 2 & 0 & 1 & 2 \\ 0 & 0 & 6 & -2 & -10 \\ 0 & 0 & 0 & 5 & 4 \end{pmatrix}
+mult_{4,5^{-1}},add_{1,4,-1},add_{2,4,-1^{0}},add_{3,4,-1^{0}}...\mapsto
+\begin{pmatrix} 1 & 0 & 0 & 0 & -5^{-1} \cdot 26 \\ 0 & 1 & 0 & 0 & 5^{-1} \cdot 3 \\
+0 & 0 & 1 & 0 & -5^{-1} \cdot 7 \\ 0 & 0 & 0 & 1 & 5^{-1} \cdot 4 \end{pmatrix}$.\\ \\ 
+$Sol(A,b)=\{5^{-1} \cdot \begin{pmatrix} -26 \\ 3 \\ -7 \\ 4 \end{pmatrix}\}$.
+\aufgabe{61}
+Es seien ein Körper $K$ und $A \in K^{2 \times 2}$ gegeben. Zeigen Sie, dass folgende Bedingungen äquivalent sind.
+\begin{itemize}
+\item (a) Für alle $b \in K^{2 \times 1}$ ist gibt es genau eine Lösung des linearen Gleichungssystems zur erweiterten Koeffizientenmatrix $(A|b)$.
+\item (b) Die Lösungsmenge des homogenen linearen Gleichungssystems zur Koeffizientenmatrix $A$ ist gegeben durch
+\begin{center}$Sol(A,b)=\{0\}$. \end{center}
+\item (c) Es gilt \begin{center} $A_{1,1}A_{2,2}-A_{1,2}A_{2,1} \neq 0$. \end{center}
+\end{itemize}
+\aufgabe{des Tutors}
+\begin{itemize}
+\item 4 Vorspeisen
+\item 6 Hauptgerichte
+\item 3 Nachspeisen
+\item Vorspeisen und Nachspeisen nicht notwendig verschieden
+\end{itemize}
+2 Personen bestellen:
+\begin{itemize}
+\item Höchstens 2 Vorspeisen
+\item Höchstens 2 Nachspeisen
+\item Entweder genau ein Hauptgericht oder 2 verschiedene Hauptgerichte
+\end{itemize}
+Sei $V$ die Menge der Vorspeisen, $H$ die Menge Haupgerichte, $N$ die Menge der Nachspeisen.\\
+$B_{Vorspeisen}=MComb_{0}(V) \dotcup MComb_{1}(V) \dotcup MComb_{2}(V)$.\\
+$B_{Nachspeisen}=MComb_{0}(N) \cup MComb_{1}(N) \dotcup MComb_{2}(V)$.\\
+$B_{Hauptgerichte}=Comb_{1}(H) \dotcup Comb_{2}(H)$.\\ \\
+$B=B_{Vorspeisen} \times B_{Nachspeisen} \times B_{Hauptgerichte}$.
+Summenregel (16.4), Korollar (16.61), Korollar (16.54):\\
+$|B_{Vorspeisen}|=|MComb_{0}(V) \dotcup MComb_{1}(V) \dotcup MComb_{2}(V)|=\\
+|MComb_{0}(V)|+|MComb_{1}(V)|+MComb_{2}(V)|=\\
+\binom{0+4-1}{0}+\binom{1+4-1}{1}+\binom{2+4-1}{2}=\binom{3}{0}+\binom{4}{1}+\binom{5}{2}=1+4+10=15$. \\ \\
+$|B_{Nachspeisen}|=....=\binom{0+3-1}{0}=\binom{1+3-1}{1}+\binom{2+3-1}{2}= \binom{2}{0}+\binom{3}{1}+\binom{4}{2}\\
+=1+3+6=10$.\\ \\
+$|B_{Hauptspeise}|=|Comb_{1}(H) \dotcup Comb_{2}(H)|=|Comb_{1}(H)|=|Comb_{2}(H)|\\
+=\binom{6}{1}+\binom{6}{2}= 6+15=21$.\\
+$|B|=|B_{Vorspeisen} \times B_{Nachspeisen} \times B_{Hauptgerichte}|\\
+=|B_{Vorspeisen}| \cdot |B_{Nachspeisen}| \cdot |B_{Hauptgerichte}|= 15 \cdot 10 \cdot 21 = 3150$.
+\end{document}
+% Nummer des Blattes angepasst?
